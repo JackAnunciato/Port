@@ -1,0 +1,128 @@
+.about-experience-container {
+  display: flex;
+  justify-content: space-between; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+.about {
+  flex: 1; 
+  margin-right: 20px; 
+  font-family: Consolas, monospace; 
+}
+
+.experience-container {
+  flex: 1; 
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+}
+
+.photo-container {
+  border: 3px dashed #ff0000;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; 
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-container {
+  max-width: 500px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center; /* Adicionado para centralizar os botões */
+}
+.design-button, .projects-button {
+  background-color: #FF0000;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Consolas, monospace; 
+  transition: background-color 0.3s ease;
+}
+
+.design-button:hover, .projects-button:hover {
+  background-color: #cc0000;
+}
+
+.experience-container {
+  margin-top: 20px; 
+}
+
+.experience-card {
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: #fff; 
+  padding: 20px;
+  margin: 10px 0; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); 
+  transition: transform 0.3s ease, max-height 0.3s ease; 
+  overflow: hidden; 
+  max-height: 70px; 
+  font-family: Consolas, monospace; 
+}
+
+.experience-card:hover {
+  transform: scale(1.05); 
+  max-height: 200px; 
+}
+
+.logo-container {
+  display: flex; 
+  gap: 10px; 
+  margin: 10px 0; 
+}
+
+.logo-container img {
+  width: 30px; 
+  height: auto; 
+  filter: brightness(0) saturate(100%) invert(27%) sepia(82%) saturate(6720%) hue-rotate(352deg) brightness(101%) contrast(101%);
+
+  border-radius: 5px; 
+}
+
+.experience-content {
+  display: none; 
+}
+
+.experience-card:hover .experience-content {
+  display: block; 
+}
+
+.experience h2 {
+  color: #ff0000; 
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); 
+  margin-bottom: 15px; 
+  font-size: 2rem; 
+  font-family: Consolas, monospace; 
+}

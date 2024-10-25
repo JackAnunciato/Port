@@ -1,0 +1,67 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  font-family: Consolas, monospace;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.5);
+  animation: pulse 2s infinite alternate; /* Animação de pulsação */
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #e6e6e6;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+  backdrop-filter: blur(5px); /* Desfoque */
+  z-index: 1;
+}
+
+.hero h1, .hero p, button {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique acima do desfoque */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff0000;
+  border: 2px solid rgba(255, 0, 0, 0.8);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: Consolas, monospace;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  animation: pulse 2s infinite alternate; /* Animação de pulsação */
+}
+
+button:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  transform: scale(1.1); /* Cresce ligeiramente ao passar o mouse */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 25px rgba(255, 0, 0, 0.6); /* Realça o brilho */
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}

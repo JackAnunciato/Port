@@ -1,0 +1,42 @@
+/* projects.component.css */
+.projects {
+    padding: 50px;
+    color: #fff;
+    font-family: Consolas, monospace;
+    min-height: 100vh;
+  }
+  
+  .projects h2 {
+    color: #ff0000;
+    font-size: 2.5rem;
+  }
+  
+  .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .project-card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(33% - 20px);
+    color: #fff;
+  }
+  
+  .project-card h3 {
+    color: #ff0000;
+    font-size: 1.5rem;
+  }
+  
+  .project-card a {
+    color: #ff0000;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .project-card a:hover {
+    text-decoration: underline;
+  }
+  
