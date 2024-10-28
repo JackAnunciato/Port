@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+
+  constructor(private soundService : SoundService){}
+
+  click(){
+    this.soundService.playSoundClick();
+  }
 
 }

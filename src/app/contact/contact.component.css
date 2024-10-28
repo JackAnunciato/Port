@@ -1,15 +1,23 @@
 /* contact.component.css */
 .contact {
-    padding: 50px;
-    background-color: #000;
-    color: #fff;
-    font-family: Consolas, monospace;
-    min-height: 100vh;
-  }
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  color: #fff;
+  font-family: Consolas, monospace;
+}
+
+.form-group {
+  max-width: 600px;
+  width: 100%;
+  margin: auto; 
+}
   
   .contact h2 {
     color: #ff0000;
     font-size: 2.5rem;
+    text-align: center;
   }
   
   form {

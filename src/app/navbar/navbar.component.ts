@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router'; // Importar RouterModule para navegação
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,5 +10,12 @@ import { RouterModule } from '@angular/router'; // Importar RouterModule para na
   styleUrls: ['./navbar.component.css'] // Correção: usar styleUrls (plural)
 })
 export class NavbarComponent {
+
+
+  constructor(private soundService: SoundService){}
+
+  change(){
+    this.soundService.playSoundChange()    
+  }
 
 }

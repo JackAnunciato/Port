@@ -2,5 +2,8 @@ body {
   background-image: url('./assets/img/backgroud.png'); /* Caminho da imagem de fundo */
   background-size: cover;
   background-position: center;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(5px); 
+  cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur933.ani), 
+  url(http://www.rw-designer.com/cursor-extern.php?id=211610), auto !important;
+  }   
