@@ -1,66 +1,106 @@
 <div class="about-experience-container">
-  <div class="about">
-    <h2>Sobre Mim</h2>
-    <div class="content-container">
-      <div class="photo-container">
-        <img src="./../../assets/img/IMG_9767-2.jpg" alt="Foto de Lucas Anunciato">
-      </div>
-      <div class="text-container">
-        <p>
-          Sou Lucas Anunciato, um desenvolvedor full-stack especializado em Angular e Laravel. Tenho experiência em criar soluções web modernas e escaláveis, com foco em eficiência e boas práticas de desenvolvimento. Com 5 anos de experiência em desenvolvimento e suporte de sistemas, tenho sido fundamental na criação de novas funcionalidades e na correção de bugs e problemas em sistemas existentes. Meu papel também se estende ao suporte, onde assegurei consistentemente uma taxa de resolução de 100% para chamados dentro do Acordo de Nível de Serviço (SLA) em todas as situações em que estive envolvido.
-          <br><br>
-          Além disso, possuo habilidades em design gráfico, sendo proficiente em ferramentas como Photoshop e Illustrator para a criação de logotipos, banners e campanhas. Confira alguns dos meus projetos e designs abaixo.
-        </p>
-        
-        <div class="button-group">
-          <button class="design-button" routerLink="/designs">Veja Meus Designs</button>
-          <button class="projects-button" routerLink="/projects">Veja Meus Projetos</button>
+  <section class="about-panel cyber-panel">
+    <header class="about-header">
+      <h2 class="page-title glitch-text" data-text="Sobre Mim">Sobre Mim</h2>
+      <p class="about-role">Full-Stack Senior</p>
+    </header>
+
+    <div class="about-layout">
+      <aside class="about-nav">
+        <button type="button" class="nav-tab" [class.active]="activeTab === 'sobre'" (click)="setTab('sobre')">Sobre</button>
+        <button type="button" class="nav-tab" [class.active]="activeTab === 'stack'" (click)="setTab('stack')">Stack</button>
+        <button type="button" class="nav-tab" [class.active]="activeTab === 'projetos'" (click)="setTab('projetos')">Projetos</button>
+        <button type="button" class="nav-tab" [class.active]="activeTab === 'design'" (click)="setTab('design')">Design</button>
+      </aside>
+
+      <div class="about-content">
+        <div class="portrait">
+          <div class="photo-frame">
+            <img src="assets/img/IMG_9767-2.jpg" alt="Foto de Lucas Anunciato">
+            <span class="scanline"></span>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h3 class="info-name">Lucas Anunciato</h3>
+
+          @if (activeTab === 'sobre') {
+            <p class="info-text">
+              Desenvolvedor full-stack com foco em Angular, Go, blockchain e sistemas de alta complexidade.
+              Atuo em KYC/KYB com biometria e IA, plataformas de tokenização e sistemas aduaneiros (Comex),
+              com integrações cloud e rigor de segurança.
+            </p>
+            <dl class="info-grid">
+              <div><dt>Atuação</dt><dd>Blockchain · IA · Comex</dd></div>
+              <div><dt>Região</dt><dd>Jacareí / São José dos Campos, SP</dd></div>
+              <div><dt>Experiência</dt><dd>5+ anos em produto e sustentação</dd></div>
+            </dl>
+          }
+
+          @if (activeTab === 'stack') {
+            <div class="skill-list">
+              <div class="skill"><span>Angular</span><div class="bar"><i style="--w: 95%"></i></div></div>
+              <div class="skill"><span>Go</span><div class="bar"><i style="--w: 88%"></i></div></div>
+              <div class="skill"><span>Solidity / Web3</span><div class="bar"><i style="--w: 82%"></i></div></div>
+              <div class="skill"><span>AWS / IA</span><div class="bar"><i style="--w: 80%"></i></div></div>
+              <div class="skill"><span>Laravel / .NET</span><div class="bar"><i style="--w: 85%"></i></div></div>
+            </div>
+          }
+
+          @if (activeTab === 'projetos') {
+            <ul class="focus-list">
+              <li><strong>CheckGO</strong> — KYC/KYB biométrico (Orvyan)</li>
+              <li><strong>Tokeygo</strong> — tokenização e crowdfunding (Multplus)</li>
+              <li><strong>ImpDoc</strong> — sistema aduaneiro de importação</li>
+            </ul>
+          }
+
+          @if (activeTab === 'design') {
+            <p class="info-text">
+              Background em design gráfico com Photoshop e Illustrator — logos, banners e campanhas
+              alinhadas ao produto.
+            </p>
+          }
+
+          <div class="about-actions">
+            <a class="cyber-btn" routerLink="/designs">Designs</a>
+            <a class="cyber-btn outline" routerLink="/projects">Projetos</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="experience-container">
-    <h2>Experiências</h2>
-    <div class="experience-card" (mouseenter)="playSound()">
-      <strong>Fullstack Developer</strong> | MultFacil
-      <br>10/2022 - 11/2023
-      <div class="logo-container">
-        <img src="./../../assets/img/angular.svg" alt="Angular Logo">
-        <img src="./../../assets/img/laravel.svg" alt="Laravel Logo">
-        <img src="./../../assets/img/mariadb.svg" alt="MariaDB Logo">
-      </div>
-      <p class="experience-content">Responsável por desenvolver novas funcionalidades para sistemas de controle de acesso e documentos, incluindo a implementação de sistemas gerais de gestão escolar, integrando com a API do Google Maps para roteamento e transporte, além de gestão de pessoal e CRM.</p>
+  <section class="experience-panel">
+    <h2 class="page-title glitch-text" data-text="Experiências">Experiências</h2>
+    <p class="shard-hint">Clique em um card para abrir</p>
+
+    <div class="shard-list">
+      @for (exp of experiences; track exp.id) {
+        <button
+          type="button"
+          class="shard"
+          [class.open]="isOpen(exp.id)"
+          (click)="toggleShard(exp.id)"
+        >
+          <div class="shard-face">
+            <div class="shard-main">
+              <span class="shard-company">{{ exp.company }}</span>
+              <span class="shard-role">{{ exp.role }}</span>
+              <span class="shard-period">{{ exp.period }}</span>
+            </div>
+            <div class="shard-icons">
+              @for (icon of exp.icons; track icon.src) {
+                <img [src]="icon.src" [alt]="icon.alt" [title]="icon.alt">
+              }
+            </div>
+            <span class="shard-chevron" aria-hidden="true">{{ isOpen(exp.id) ? '−' : '+' }}</span>
+          </div>
+          <div class="shard-body">
+            <p>{{ exp.description }}</p>
+          </div>
+        </button>
+      }
     </div>
-    <div class="experience-card" (mouseenter)="playSound()">
-      <strong>Fullstack Developer</strong> | Sety Segurança e Tec
-      <br>12/2021 - 08/2022
-      <div class="logo-container">
-        <img src="./../../assets/img/laravel.svg" alt="Laravel Logo">
-        <img src="./../../assets/img/bootstrap.svg" alt="Bootstrap Logo">
-        <img src="./../../assets/img/mariadb.svg" alt="MariaDB Logo">
-      </div>
-      <p class="experience-content">Responsável pela manutenção e desenvolvimento de novas funcionalidades, contribuindo para a criação de um sistema de plano anual e um sistema de ranking de fidelidade de usuários.</p>
-    </div>
-    <div class="experience-card">
-      <strong>Fullstack Developer</strong> | C-tap
-      <br>11/2020 - 11/2021
-      <div class="logo-container" (mouseenter)="playSound()">
-        <img src="./../../assets/img/dotnet.svg" alt=".NET Logo">
-        <img src="./../../assets/img/angular.svg" alt="Angular Logo">
-        <img src="./../../assets/img/serverfault.svg" alt="SQL Server Logo">
-      </div>
-      <p class="experience-content">Desenvolvi e implementei um sistema virtualizando as operações da empresa, desde o cadastro de clientes até o controle de documentos, com geração de documentos em PDF.</p>
-    </div>
-    <div class="experience-card">
-      <strong>Systems Analyst</strong> | Softwillians
-      <br>05/2019 - 11/2019
-      <div class="logo-container" (mouseenter)="playSound()">
-        <img src="./../../assets/img/dotnet.svg" alt="ASP.NET Logo">
-        <img src="./../../assets/img/angular.svg" alt="Angular Logo">
-        <img src="./../../assets/img/serverfault.svg" alt="SQL Server Logo">
-      </div>
-      <p class="experience-content">Como Analista, minhas responsabilidades incluíam receber chamadas e solicitações, resolver erros dentro de um SLA de 24 horas, trabalhando em vários sistemas utilizando diversas linguagens e tecnologias.</p>
-    </div>
-  </div>
+  </section>
 </div>

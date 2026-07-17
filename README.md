@@ -1,27 +1,37 @@
-# Port
+# Port — Lucas Anunciato
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+Portfólio Angular 22 (SPA) com tema cyberpunk.
 
-## Development server
+## Desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+npm ci
+npm start
+```
 
-## Code scaffolding
+Abra `http://localhost:4200/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Build local
 
-## Build
+```bash
+npm run build
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Saída de produção: `dist/port/browser`.
 
-## Running unit tests
+## Deploy no AWS Amplify Hosting
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Envie o repositório para GitHub/GitLab/Bitbucket/CodeCommit.
+2. No [Amplify Console](https://console.aws.amazon.com/amplify/), **Create new app** → **Host web app** → conecte o repositório e a branch.
+3. O Amplify detecta o `amplify.yml` (Node 22, `npm ci`, `npm run build`, artefatos em `dist/port/browser`).
+4. Após o primeiro deploy, em **Hosting → Rewrites and redirects**, importe ou cole o conteúdo de `amplify-rewrites.json` para as rotas Angular (`/about`, `/projects`, etc.) funcionarem no refresh.
 
-## Running end-to-end tests
+Regra SPA equivalente:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Source | Target | Type |
+|--------|--------|------|
+| `/<*>` | `/index.html` | `404 (Rewrite)` |
 
-## Further help
+5. Salve e republicue se necessário.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Não é preciso Amplify CLI nem backend — só Hosting estático.

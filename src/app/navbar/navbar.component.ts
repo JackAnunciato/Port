@@ -7,15 +7,12 @@ import { SoundService } from '../services/sound.service';
   standalone: true,
   imports: [RouterModule], // Importar RouterModule para os links do router
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'] // Correção: usar styleUrls (plural)
+  styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  constructor(private soundService: SoundService) {}
 
-
-  constructor(private soundService: SoundService){}
-
-  change(){
-    this.soundService.playSoundChange()    
+  change() {
+    this.soundService.playSoundChange();
   }
-
 }

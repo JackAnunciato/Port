@@ -1,9 +1,165 @@
+:root {
+  --cyber-red: #ff003c;
+  --cyber-red-bright: #ff1a4a;
+  --cyber-red-soft: #ff6b8a;
+  --cyber-red-dim: rgba(255, 0, 60, 0.45);
+  --cyber-red-glow: rgba(255, 0, 60, 0.8);
+  --cyber-panel: rgba(8, 8, 10, 0.88);
+  --cyber-text: #f2f2f2;
+  --cyber-muted: #a8a8a8;
+  --font-ui: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-image: url('./assets/img/backgroud.png'); /* Caminho da imagem de fundo */
+  background-image: url('./assets/img/backgroud.png');
   background-size: cover;
   background-position: center;
-  background-color: rgba(0, 0, 0, 0.5); 
-  backdrop-filter: blur(5px); 
-  cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur933.ani), 
-  url(http://www.rw-designer.com/cursor-extern.php?id=211610), auto !important;
-  }   
+  background-attachment: fixed;
+  background-color: #050505;
+  backdrop-filter: blur(5px);
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cyber-text);
+  font-family: var(--font-mono);
+  cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur933.ani),
+    url(http://www.rw-designer.com/cursor-extern.php?id=211610), auto !important;
+}
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.cyber-panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 0, 60, 0.05), transparent 30%),
+    var(--cyber-panel);
+  border: 1px solid var(--cyber-red);
+  box-shadow: 0 0 18px var(--cyber-red-dim);
+  clip-path: polygon(
+    0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%,
+    10px 100%, 0 calc(100% - 10px)
+  );
+  padding: 1.25rem 1.35rem;
+}
+
+.cyber-panel::before,
+.cyber-panel::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--cyber-red);
+  pointer-events: none;
+}
+
+.cyber-panel::before {
+  top: 8px;
+  left: 8px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.cyber-panel::after {
+  bottom: 8px;
+  right: 8px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.page-title {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-ui);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--cyber-red);
+  text-shadow: 0 0 12px var(--cyber-red-glow);
+}
+
+.cyber-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: var(--cyber-red);
+  border: 1px solid var(--cyber-red-bright);
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  box-shadow: 0 0 12px var(--cyber-red-dim);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cyber-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 18px var(--cyber-red-glow);
+}
+
+.cyber-btn.outline {
+  background: transparent;
+  color: var(--cyber-red-soft);
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: #ff4d6d;
+  animation: glitch-text-a 4.5s infinite linear;
+}
+
+.glitch-text::after {
+  color: #99001f;
+  animation: glitch-text-b 4.5s infinite linear;
+}
+
+@keyframes glitch-text-a {
+  0%, 90%, 100% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+  91% { opacity: 0.7; transform: translate(-2px, 1px); clip-path: inset(10% 0 55% 0); }
+  93% { opacity: 0.45; transform: translate(3px, -1px); clip-path: inset(40% 0 20% 0); }
+  95% { opacity: 0; }
+}
+
+@keyframes glitch-text-b {
+  0%, 90%, 100% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+  92% { opacity: 0.65; transform: translate(2px, -1px); clip-path: inset(60% 0 10% 0); }
+  94% { opacity: 0.4; transform: translate(-3px, 2px); clip-path: inset(25% 0 45% 0); }
+  96% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

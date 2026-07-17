@@ -1,12 +1,17 @@
-<!-- projects.component.html -->
-<div class="projects">
-    <h2>Meus Projetos</h2>
+<div class="projects page-shell">
+  <div class="cyber-panel">
+    <h2 class="page-title glitch-text" data-text="Projetos">Projetos</h2>
     <div class="project-list">
-      <div class="project-card" *ngFor="let project of projects">
-        <h3>{{ project.name }}</h3>
-        <p>{{ project.description }}</p>
-        <a [href]="project.link" target="_blank">Ver Projeto</a>
-      </div>
+      @for (project of projects; track project.name) {
+        <article class="project-card">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.description }}</p>
+          <span class="stack">{{ project.stack }}</span>
+          @if (project.link !== '#') {
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer">Ver projeto</a>
+          }
+        </article>
+      }
     </div>
   </div>
-  
+</div>

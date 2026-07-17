@@ -1,42 +1,63 @@
-/* projects.component.css */
 .projects {
-    padding: 50px;
-    color: #fff;
-    font-family: Consolas, monospace;
-    height: 70vh;
-  }
-  
-  .projects h2 {
-    color: #ff0000;
-    font-size: 2.5rem;
-  }
-  
-  .project-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .project-card {
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    width: calc(33% - 20px);
-    color: #fff;
-  }
-  
-  .project-card h3 {
-    color: #ff0000;
-    font-size: 1.5rem;
-  }
-  
-  .project-card a {
-    color: #ff0000;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .project-card a:hover {
-    text-decoration: underline;
-  }
-  
+  min-height: 70vh;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 0, 60, 0.5);
+  padding: 1.1rem 1rem;
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px,
+    100% 100%, 10px 100%, 0 calc(100% - 10px)
+  );
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--cyber-red);
+  box-shadow: 0 0 16px var(--cyber-red-dim);
+  transform: translateY(-3px);
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cyber-red);
+  letter-spacing: 0.04em;
+}
+
+.project-card p {
+  margin: 0 0 0.65rem;
+  line-height: 1.5;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.project-card .stack {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--cyber-red-soft);
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.03em;
+}
+
+.project-card a {
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--cyber-red);
+}
+
+.project-card a:hover {
+  color: var(--cyber-red-soft);
+}
