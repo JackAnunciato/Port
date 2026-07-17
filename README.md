@@ -17,21 +17,17 @@ Abra `http://localhost:4200/`.
 npm run build
 ```
 
-Saída de produção: `dist/port/browser`.
+Saída de produção: `dist/port` (com `index.html` na raiz dessa pasta).
 
 ## Deploy no AWS Amplify Hosting
 
-1. Envie o repositório para GitHub/GitLab/Bitbucket/CodeCommit.
-2. No [Amplify Console](https://console.aws.amazon.com/amplify/), **Create new app** → **Host web app** → conecte o repositório e a branch.
-3. O Amplify detecta o `amplify.yml` (Node 22, `npm ci`, `npm run build`, artefatos em `dist/port/browser`).
-4. Após o primeiro deploy, em **Hosting → Rewrites and redirects**, importe ou cole o conteúdo de `amplify-rewrites.json` para as rotas Angular (`/about`, `/projects`, etc.) funcionarem no refresh.
-
-Regra SPA equivalente:
-
-| Source | Target | Type |
-|--------|--------|------|
-| `/<*>` | `/index.html` | `404 (Rewrite)` |
-
-5. Salve e republicue se necessário.
+1. Envie o repositório para o GitHub (branch `master`).
+2. No Amplify: **Hosting → Build settings**
+   - Use o `amplify.yml` **do repositório** (não deixe a especificação antiga do console sobrescrever).
+   - **Node.js** em Live package updates: **20** ou **22**.
+   - Artefatos: `baseDirectory: dist/port`
+3. Em **Hosting → Deployments**, abra o último job e confira se o build passou (verde). Se falhou, o site fica na página “Welcome”.
+4. Clique em **Redeploy this version** após corrigir o `amplify.yml`.
+5. Em **Rewrites and redirects**, cole o JSON de `amplify-rewrites.json` para `/about`, `/projects`, etc. funcionarem no refresh.
 
 Não é preciso Amplify CLI nem backend — só Hosting estático.

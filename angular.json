@@ -13,7 +13,10 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/port",
+            "outputPath": {
+              "base": "dist/port",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

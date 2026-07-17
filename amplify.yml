@@ -3,15 +3,17 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 22
-        - nvm use 22
         - node -v
-        - npm ci
+        - npm ci --legacy-peer-deps
     build:
       commands:
         - npm run build
+        # Confirma que o index.html existe onde o Amplify espera
+        - ls -la dist/port
+        - test -f dist/port/index.html
   artifacts:
-    baseDirectory: dist/port/browser
+    # Angular 22 com outputPath.browser = "" → arquivos em dist/port/
+    baseDirectory: dist/port
     files:
       - '**/*'
   cache:
