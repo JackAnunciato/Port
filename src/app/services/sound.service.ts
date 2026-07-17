@@ -7,16 +7,16 @@ import { isPlatformBrowser } from '@angular/common';
 export class SoundService {
   private readonly platformId = inject(PLATFORM_ID);
 
-  playSoundCard(duration: number = 2000) {
-    this.play('./assets/sound/open-card.mp3', duration);
+  playSoundCard(duration: number = 800) {
+    this.play('/assets/sound/open-card.mp3', duration);
   }
 
-  playSoundChange(duration: number = 2000) {
-    this.play('./assets/sound/change-page.mp3', duration);
+  playSoundChange(duration: number = 800) {
+    this.play('/assets/sound/change-page.mp3', duration);
   }
 
-  playSoundClick(duration: number = 2000) {
-    this.play('./assets/sound/click.mp3', duration);
+  playSoundClick(duration: number = 500) {
+    this.play('/assets/sound/click.mp3', duration);
   }
 
   private play(src: string, duration: number) {
@@ -25,11 +25,12 @@ export class SoundService {
     }
 
     const audio = new Audio(src);
-    audio.currentTime = 0;
+    audio.volume = 0.7;
     void audio.play().catch(() => undefined);
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       audio.pause();
+      audio.currentTime = 0;
     }, duration);
   }
 }
