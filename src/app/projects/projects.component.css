@@ -2,6 +2,43 @@
   min-height: 70vh;
 }
 
+.company-group {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 0, 60, 0.28);
+}
+
+.company-group:last-of-type {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.company-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.85rem;
+}
+
+.company-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyber-red-soft);
+}
+
+.company-name {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
 .project-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -17,10 +54,13 @@
     100% 100%, 10px 100%, 0 calc(100% - 10px)
   );
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
 .project-card:hover,
-.project-card.featured {
+.project-card.has-demo {
   border-color: var(--cyber-red);
   box-shadow: 0 0 16px var(--cyber-red-dim);
 }
@@ -29,47 +69,59 @@
   transform: translateY(-3px);
 }
 
-.project-card h3 {
-  margin: 0 0 0.5rem;
+.project-card h4 {
+  margin: 0;
   font-family: var(--font-ui);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--cyber-red);
   letter-spacing: 0.04em;
 }
 
 .project-card p {
-  margin: 0 0 0.65rem;
+  margin: 0;
   line-height: 1.5;
   color: #ddd;
   font-size: 0.9rem;
+  flex: 1;
 }
 
 .project-card .stack {
   display: block;
   font-size: 0.78rem;
   color: var(--cyber-red-soft);
-  margin-bottom: 0.65rem;
   letter-spacing: 0.03em;
 }
 
+.demo-trigger,
 .project-card a {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--cyber-red);
   color: #fff;
-  text-decoration: none;
   font-family: var(--font-ui);
   font-weight: 600;
+  font-size: 0.95rem;
   letter-spacing: 0.06em;
-  border-bottom: 1px solid var(--cyber-red);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 0 0.1rem;
 }
 
+.demo-trigger:hover,
 .project-card a:hover {
   color: var(--cyber-red-soft);
 }
 
 .demo-panel {
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 0, 60, 0.4);
+  border-top: 1px solid rgba(255, 0, 60, 0.45);
+  scroll-margin-top: 5rem;
+  animation: demo-in 0.35s ease;
 }
 
 .demo-header {
@@ -94,7 +146,7 @@
 .demo-header h3 {
   margin: 0 0 0.35rem;
   font-family: var(--font-ui);
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.04em;
@@ -111,7 +163,6 @@
 .iframe-frame {
   position: relative;
   width: 100%;
-  min-height: 720px;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid var(--cyber-red);
   box-shadow: 0 0 18px var(--cyber-red-dim);
@@ -126,15 +177,38 @@
 .iframe-frame iframe {
   display: block;
   width: 100%;
-  height: 720px;
+  height: min(72vh, 720px);
+  min-height: 480px;
   border: 0;
   background: #0a0a0a;
 }
 
+@keyframes demo-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (max-width: 700px) {
-  .iframe-frame,
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-header {
+    flex-direction: column;
+  }
+
+  .demo-header .cyber-btn {
+    width: 100%;
+  }
+
   .iframe-frame iframe {
-    min-height: 560px;
-    height: 560px;
+    height: 70vh;
+    min-height: 420px;
   }
 }
