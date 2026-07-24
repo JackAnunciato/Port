@@ -19,9 +19,13 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card.featured {
   border-color: var(--cyber-red);
   box-shadow: 0 0 16px var(--cyber-red-dim);
+}
+
+.project-card:hover {
   transform: translateY(-3px);
 }
 
@@ -60,4 +64,77 @@
 
 .project-card a:hover {
   color: var(--cyber-red-soft);
+}
+
+.demo-panel {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 0, 60, 0.4);
+}
+
+.demo-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.demo-label {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyber-red-soft);
+}
+
+.demo-header h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.demo-desc {
+  margin: 0;
+  max-width: 52rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.iframe-frame {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--cyber-red);
+  box-shadow: 0 0 18px var(--cyber-red-dim);
+  overflow: hidden;
+  clip-path: polygon(
+    0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%,
+    10px 100%, 0 calc(100% - 10px)
+  );
+}
+
+.iframe-frame iframe {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: 0;
+  background: #0a0a0a;
+}
+
+@media (max-width: 700px) {
+  .iframe-frame,
+  .iframe-frame iframe {
+    min-height: 560px;
+    height: 560px;
+  }
 }

@@ -1,17 +1,46 @@
 <div class="projects page-shell">
   <div class="cyber-panel">
     <h2 class="page-title glitch-text" data-text="Projetos">Projetos</h2>
+
     <div class="project-list">
       @for (project of projects; track project.name) {
-        <article class="project-card">
+        <article class="project-card" [class.featured]="project.featured">
           <h3>{{ project.name }}</h3>
           <p>{{ project.description }}</p>
           <span class="stack">{{ project.stack }}</span>
           @if (project.link !== '#') {
-            <a [href]="project.link" target="_blank" rel="noopener noreferrer">Ver projeto</a>
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer">
+              {{ project.featured ? 'Abrir demo' : 'Ver projeto' }}
+            </a>
           }
         </article>
       }
     </div>
+
+    <section class="demo-panel" id="checkgo-demo">
+      <header class="demo-header">
+        <div>
+          <p class="demo-label">Demo ao vivo · Orvyan</p>
+          <h3>CheckGO — Onboarding completo</h3>
+          <p class="demo-desc">
+            Fluxo de KYC/KYB embutido: cadastro, biometria e validação documental.
+            Permita câmera e microfone se o navegador pedir.
+          </p>
+        </div>
+        <a class="cyber-btn outline" [href]="checkgoEmbedUrl" target="_blank" rel="noopener noreferrer">
+          Abrir em nova aba
+        </a>
+      </header>
+
+      <div class="iframe-frame">
+        <iframe
+          [src]="checkgoEmbed"
+          title="Anunciato Informatica — CheckGO Orvyan"
+          loading="lazy"
+          allow="camera; microphone; fullscreen"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
   </div>
 </div>
